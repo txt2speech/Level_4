@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Visual Novel Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="scripts/story.js"></script>
+</head>
+<body>
+    <main class="app-shell">
+        <section class="viewport">
+            <section class="stage-screen">
+                <section class="scene" id="intro-scene">
+                    <img
+                        class="scene-background"
+                        src="assets/images/scenes/scene-living-room.png"
+                        alt=""
+                    >
+                    <img
+                        class="character"
+                        data-char="sam"
+                        src="assets/images/characters/char-abigail-neutral.png"
+                        alt=""
+                    >
+                    <img
+                        class="character"
+                        data-char="leo"
+                        src="assets/images/characters/char-alex-neutral.png"
+                        alt=""
+                    >
+
+                    <div class="steps">
+                        <div data-step="focus" data-target='[data-char="sam"]'></div>
+                        <div data-step="say" data-speaker="Sam" data-color="#79b8f9">
+                            We only need a tiny story here. Can we make one clear example for the engine?
+                        </div>
+                        <div data-step="wait-click"></div>
+                        <div data-step="focus" data-target='[data-char="leo"]'></div>
+                        <div data-step="say" data-speaker="Leo" data-color="#bdf9ac">
+                            Yes. We will use two stats: trust and focus. Your choices decide the ending.
+                        </div>
+                        <div data-step="wait-click"></div>
+                        <div data-step="choice">
+                            <button type="button" data-run="chooseSupport">
+                                Support Sam
+                            </button>
+                            <button type="button" data-run="choosePressure">
+                                Pressure Sam
+                            </button>
+                        </div>
+                        <div data-step="focus" data-target='[data-char="sam"]'></div>
+                        <div data-step="say" data-speaker="Sam" data-color="#79b8f9">
+                            Good. One more choice: should we slow down and plan, or just rush ahead?
+                        </div>
+                        <div data-step="wait-click"></div>
+                        <div data-step="choice">
+                            <button type="button" data-run="choosePlan">
+                                Make a simple plan
+                            </button>
+                            <button type="button" data-run="chooseRush">
+                                Rush ahead
+                            </button>
+                        </div>
+                        <div data-step="run" data-action="resolveEnding"></div>
+                    </div>
+                </section>
+
+                <section
+                    class="scene"
+                    id="ending-good-scene"
+                    data-hide-story-ui="true"
+                >
+                    <img
+                        class="scene-background"
+                        src="assets/images/scenes/scene-living-room.png"
+                        alt=""
+                    >
+
+                    <section class="ending-screen ending-screen--good">
+                        <p class="ending-kicker">Ending A</p>
+                        <h1>Good Ending</h1>
+                        <p class="ending-lead">
+                            Trust and focus were both positive, so the team stays calm and finishes the example together.
+                        </p>
+                        <p class="ending-note" data-visible-if="hasPositiveTrust">
+                            This line is shown by a simple condition: `statTrust > 0`.
+                        </p>
+                        <button class="primary-button" type="button" data-run="restartStory">
+                            Restart
+                        </button>
+                    </section>
+
+                    <div class="steps"></div>
+                </section>
+
+                <section
+                    class="scene"
+                    id="ending-bad-scene"
+                    data-hide-story-ui="true"
+                >
+                    <img
+                        class="scene-background"
+                        src="assets/images/scenes/scene-living-room.png"
+                        alt=""
+                    >
+
+                    <section class="ending-screen ending-screen--bad">
+                        <p class="ending-kicker">Ending B</p>
+                        <h1>Bad Ending</h1>
+                        <p class="ending-lead">
+                            Trust or focus dropped too low, so the team loses momentum and the example ends badly.
+                        </p>
+                        <p class="ending-note" data-visible-if="hasPositiveTrust">
+                            Trust can still be positive here if focus dropped below zero.
+                        </p>
+                        <button class="primary-button" type="button" data-run="restartStory">
+                            Restart
+                        </button>
+                    </section>
+
+                    <div class="steps"></div>
+                </section>
+
+                <details class="debug-panel">
+                    <summary>Debug</summary>
+                    <div class="debug-content">
+                        <h2>Live state</h2>
+                        <p class="debug-line">
+                            <strong>Current scene:</strong> <span id="debug-scene">none</span>
+                        </p>
+                        <pre id="state-output">{}</pre>
+                    </div>
+                </details>
+
+                <section class="story-ui">
+                    <section class="action-panel">
+                        <button class="primary-button is-hidden" id="continue-button" type="button">
+                            Continue
+                        </button>
+                        <div class="choice-list" id="choice-list"></div>
+                    </section>
+                    <section class="dialog-panel">
+                        <p class="speaker-label" id="speaker-name">
+                            Narrator
+                        </p>
+                        <p class="dialog-text" id="dialog-text">
+                            The story is loading.
+                        </p>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </main>
+
+    <audio id="sfx-click" preload="auto" src="assets/audio/sfx-click.mp3"></audio>
+</body>
+</html>
