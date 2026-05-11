@@ -3,156 +3,476 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Visual Novel Example</title>
+    <title>Magisk Skov - Bad Fungus</title>
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="scripts/story.js"></script>
 </head>
 <body>
-    <main class="app-shell">
-        <section class="viewport">
-            <section class="stage-screen">
-                <section class="scene" id="intro-scene">
-                    <img
-                        class="scene-background"
-                        src="assets/images/scenes/scene-living-room.png"
-                        alt=""
-                    >
-                    <img
-                        class="character"
-                        data-char="sam"
-                        src="assets/images/characters/char-abigail-neutral.png"
-                        alt=""
-                    >
-                    <img
-                        class="character"
-                        data-char="leo"
-                        src="assets/images/characters/char-alex-neutral.png"
-                        alt=""
-                    >
+<main class="app-shell">
+    <section class="viewport">
+        <section class="stage-screen">
 
-                    <div class="steps">
-                        <div data-step="focus" data-target='[data-char="sam"]'></div>
-                        <div data-step="say" data-speaker="Sam" data-color="#79b8f9">
-                            We only need a tiny story here. Can we make one clear example for the engine?
-                        </div>
-                        <div data-step="wait-click"></div>
-                        <div data-step="focus" data-target='[data-char="leo"]'></div>
-                        <div data-step="say" data-speaker="Leo" data-color="#bdf9ac">
-                            Yes. We will use two stats: trust and focus. Your choices decide the ending.
-                        </div>
-                        <div data-step="wait-click"></div>
-                        <div data-step="choice">
-                            <button type="button" data-run="chooseSupport">
-                                Support Sam
-                            </button>
-                            <button type="button" data-run="choosePressure">
-                                Pressure Sam
-                            </button>
-                        </div>
-                        <div data-step="focus" data-target='[data-char="sam"]'></div>
-                        <div data-step="say" data-speaker="Sam" data-color="#79b8f9">
-                            Good. One more choice: should we slow down and plan, or just rush ahead?
-                        </div>
-                        <div data-step="wait-click"></div>
-                        <div data-step="choice">
-                            <button type="button" data-run="choosePlan">
-                                Make a simple plan
-                            </button>
-                            <button type="button" data-run="chooseRush">
-                                Rush ahead
-                            </button>
-                        </div>
-                        <div data-step="run" data-action="resolveEnding"></div>
+            <section class="scene" id="scene-velkommen">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="birkes" src="assets/images/characters/char-abigail-neutral.png" alt="">
+
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier, 23 år, har altid følt en speciel forbindelse til naturen. En dag går han tur i en helt almindelig skov og falder pludselig ned i et hul.
                     </div>
-                </section>
-
-                <section
-                    class="scene"
-                    id="ending-good-scene"
-                    data-hide-story-ui="true"
-                >
-                    <img
-                        class="scene-background"
-                        src="assets/images/scenes/scene-living-room.png"
-                        alt=""
-                    >
-
-                    <section class="ending-screen ending-screen--good">
-                        <p class="ending-kicker">Ending A</p>
-                        <h1>Good Ending</h1>
-                        <p class="ending-lead">
-                            Trust and focus were both positive, so the team stays calm and finishes the example together.
-                        </p>
-                        <p class="ending-note" data-visible-if="hasPositiveTrust">
-                            This line is shown by a simple condition: `statTrust > 0`.
-                        </p>
-                        <button class="primary-button" type="button" data-run="restartStory">
-                            Restart
-                        </button>
-                    </section>
-
-                    <div class="steps"></div>
-                </section>
-
-                <section
-                    class="scene"
-                    id="ending-bad-scene"
-                    data-hide-story-ui="true"
-                >
-                    <img
-                        class="scene-background"
-                        src="assets/images/scenes/scene-living-room.png"
-                        alt=""
-                    >
-
-                    <section class="ending-screen ending-screen--bad">
-                        <p class="ending-kicker">Ending B</p>
-                        <h1>Bad Ending</h1>
-                        <p class="ending-lead">
-                            Trust or focus dropped too low, so the team loses momentum and the example ends badly.
-                        </p>
-                        <p class="ending-note" data-visible-if="hasPositiveTrust">
-                            Trust can still be positive here if focus dropped below zero.
-                        </p>
-                        <button class="primary-button" type="button" data-run="restartStory">
-                            Restart
-                        </button>
-                    </section>
-
-                    <div class="steps"></div>
-                </section>
-
-                <details class="debug-panel">
-                    <summary>Debug</summary>
-                    <div class="debug-content">
-                        <h2>Live state</h2>
-                        <p class="debug-line">
-                            <strong>Current scene:</strong> <span id="debug-scene">none</span>
-                        </p>
-                        <pre id="state-output">{}</pre>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Han falder og falder (Alice i Eventyrland), og vågner op i noget, der ligner den samme skov. Men græsset virker grønnere, træerne større, og enorme svampe omringer ham.
                     </div>
-                </details>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Ukendt stemme" data-color="#a0e8af">
+                        "Det var noget af en landing... Velkommen Xavier, vi har ventet dig."
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier sætter sig forvirret op. Han får øje på et træ med lilla klare farver og lange grene, der blinker med øjnene til ham.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Xavier" data-color="#79b8f9">
+                        "Øh..? Tak, men kender jeg dig? ...Og hvad fanden er der sket med mine ører?? De er blevet spidse!!! Jerry, er det dig der laver sjov igen?!"
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="focus" data-target='[data-char="birkes"]'></div>
+                    <div data-step="say" data-speaker="Birkes" data-color="#a0e8af">
+                        "Jeg kender ikke nogen Jerry. Jeg hedder Birkes. For 14 år siden overtog fungussernes leder, Kong Fugu, dette rige. Han spredte giftige sporer. Vi har brug for din hjælp!"
+                    </div>
+                    <div data-step="wait-click"></div>
 
-                <section class="story-ui">
-                    <section class="action-panel">
-                        <button class="primary-button is-hidden" id="continue-button" type="button">
-                            Continue
+                    <div data-step="choice">
+                        <button type="button" data-next="scene-ornen">Redde kongeriget</button>
+                        <button type="button" data-next="scene-try-leave">Tage hjem til menneskenes verden igen</button>
+                        <button type="button" data-next="scene-fugo-info">Høre flere detaljer om Kong Fugu</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-fugo-info">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Birkes" data-color="#a0e8af">
+                        "Fugo overbeviste fungusserne om, at de lå lavest i hierarkiet og fik det værste mad. De følte sig overset."
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Birkes" data-color="#a0e8af">
+                        "Derfor tog de sagen i egen svamp. Kongeparret blev taget til fange. Prinsesse Aleria undslap, men ingen har set hende siden."
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-velkommen-valg"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-try-leave">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier prøver at hoppe ned i muldvarpehullet for at vende tilbage til menneskenes verden, men bliver spyttet ud i Yovis igen!
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-velkommen-valg"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-velkommen-valg">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Birkes" data-color="#a0e8af">
+                        "Hvad siger du nu, Xavier? Vi har brug for din hjælp til at hæve forbandelsen."
+                    </div>
+                    <div data-step="choice">
+                        <button type="button" data-next="scene-ornen">Redde kongeriget</button>
+                        <button type="button" data-next="scene-try-leave">Tage hjem til menneskenes verden igen</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-ornen">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier har afsluttet samtalen med Birkes. Et brunligt spor i jorden viser sig.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Inden han kan nå at tænke, hører han et skrig ovenfor. En kæmpestor ørn kaster sig ned mod lysningen!
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="choice">
+                        <button type="button" data-next="scene-intermission-both">
+                            Kast dig ned og lig helt stille
                         </button>
-                        <div class="choice-list" id="choice-list"></div>
-                    </section>
-                    <section class="dialog-panel">
-                        <p class="speaker-label" id="speaker-name">
-                            Narrator
-                        </p>
-                        <p class="dialog-text" id="dialog-text">
-                            The story is loading.
-                        </p>
-                    </section>
+                        <button type="button" data-run="hideEagle" data-next="scene-intermission-both">
+                            Løb mod træerne og gem dig mellem stammerne
+                        </button>
+                        <button type="button" data-run="scareEagle" data-next="scene-intermission-both">
+                            Råb og vink for at skræmme ørnen væk
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-intermission-both">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier har overlevet ørnen, og ankommer til en lysning med 2 veje.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="choice">
+                        <button type="button" data-next="scene-feen">
+                            Gå mod den mørklagte, dystre skov
+                        </button>
+                        <button type="button" data-next="scene-soen">
+                            Gå mod den lyse skov og giftsøen
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-intermission-only-lake">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="feen" src="assets/images/characters/char-abigail-neutral.png" alt="">
+                <div class="steps">
+                    <div data-step="focus" data-target='[data-char="feen"]'></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Feen fører dig tilbage til stikrydset, men stopper pludselig op.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Feen" data-color="#f9b2c8">
+                        "Vi kan ikke fortsætte til muldvarperne endnu. Der lurer en farlig gift ved den lyse sti. Vi er nødt til at tjekke søen først."
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="choice">
+                        <button type="button" data-next="scene-soen">
+                            Gå mod den lyse skov og giftsøen
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-intermission-only-fairy">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="baever" src="assets/images/characters/char-alex-neutral.png" alt="">
+                <div class="steps">
+                    <div data-step="focus" data-target='[data-char="baever"]'></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Bæveren følger dig tilbage til krydset, men kigger frygtsomt mod den dystre sti.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Bæveren" data-color="#c19a6b">
+                        "Jeg tør ikke gå videre mod muldvarperne... Der er en mørk magi derovre. En af skovens feer er i fare i mørket!"
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="choice">
+                        <button type="button" data-next="scene-feen">
+                            Gå mod den dystre sti og spindelvævene
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-feen">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="feen" src="assets/images/characters/char-abigail-neutral.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier når frem til et område fyldt med enorme glødende svampe. Lange, tynde arme under brede hatte. Ingen ansigter, bare grønne lysende øjne.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Mellem de store svampe hænger et kæmpe edderkoppespind. Han går helt tæt på og ser at det er en lille fe.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="focus" data-target='[data-char="feen"]'></div>
+                    <div data-step="say" data-speaker="Feen" data-color="#f9b2c8">
+                        "Hjælp mig! Edderkoppen kommer snart tilbage!"
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier piller forsigtigt det klæbrige spind af hende, indtil hun er helt fri.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Feen" data-color="#f9b2c8">
+                        "Mange tak, rejsende! Muldvarperne ved, hvordan man bekæmper Fugu. Lad mig vise dig vej."
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="run" data-action="finishFairy"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-feen-to-moles">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="feen" src="assets/images/characters/char-abigail-neutral.png" alt="">
+                <div class="steps">
+                    <div data-step="focus" data-target='[data-char="feen"]'></div>
+                    <div data-step="say" data-speaker="Feen" data-color="#f9b2c8">
+                        "Nu hvor både jeg er fri, og giftsøen er renset, kan vi trygt tage ned til Muldvarperne!"
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        I vandrer dybt ned i skovbunden og finder endelig muldvarpernes huler.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-muldvarperne"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-soen">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="baever" src="assets/images/characters/char-alex-neutral.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier når frem til en lille sø. Vandet er grønt, tykt, og døde fisk ligger i overfladen.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        En flok ænder sidder klemt sammen i kanten. En bæver står på bredden og ved ikke, hvad han skal gøre.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="focus" data-target='[data-char="baever"]'></div>
+                    <div data-step="say" data-speaker="Bæveren" data-color="#c19a6b">
+                        "Jeg har forsøgt alt. Det bliver bare værre. Kan du hjælpe os med at fjerne svampene, så ænderne kan svømme frit?"
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-soen-valg"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-soen-valg">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="choice">
+                        <button type="button" data-next="scene-soen-success">
+                            Arbejd sammen om at drive svampene op på land
+                        </button>
+                        <button type="button" data-next="scene-soen-fail-b">
+                            Klatr ud på en gren og vip svampene mod bredden
+                        </button>
+                        <button type="button" data-next="scene-soen-fail-c">
+                            Kast sten i vandet for at skræmme dem
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-soen-fail-b">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Neutralt: Det virker halvt. De fleste svampe er væk, men dammen er ikke helt ren. Bæveren kigger forhåbningsfuldt på dig. Prøv igen!
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-soen-valg"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-soen-fail-c">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Negativt: Stenene skræmmer svampene ned i dybden men renser ingenting. Ænderne er stadig fanget. Det er en ommer!
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-soen-valg"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-soen-success">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="baever" src="assets/images/characters/char-alex-neutral.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Positivt: Xavier og bæveren renser dammen fuldstændigt! Ænderne kaster sig glade i vandet.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Bæveren" data-color="#c19a6b">
+                        "Tusind tak for hjælpen! Kom, jeg vil vise dig vej til muldvarperne. De har noget, du kan bruge mod Kong Fugu."
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="run" data-action="finishLake"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-soen-to-moles">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="baever" src="assets/images/characters/char-alex-neutral.png" alt="">
+                <div class="steps">
+                    <div data-step="focus" data-target='[data-char="baever"]'></div>
+                    <div data-step="say" data-speaker="Bæveren" data-color="#c19a6b">
+                        "Søen er ren, og feen i skoven er bragt i sikkerhed. Lad os tage ned til Muldvarperne!"
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Bæveren graver en lille sti, der fører jer dybt ned i undergrunden.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-muldvarperne"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-muldvarperne">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="muldvarp" src="assets/images/characters/char-alex-neutral.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier ledes frem til Muldvarpernes område. De vil gerne hjælpe ham hen til Fugu's hovedkvarter.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="focus" data-target='[data-char="muldvarp"]'></div>
+                    <div data-step="say" data-speaker="Muldvarpen" data-color="#5c4033">
+                        "Vi ser, at du er i følge med skovens magiske skabninger. Vi har gemt et magisk sværd... men du skal gøre dig fortjent til det."
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Muldvarpen" data-color="#5c4033">
+                        "Løs denne gåde: Jeg har rødder, men kan ikke gå. Jeg har blade, men kan ikke læse. Jeg står i skoven, men har intet hus. Hvad er jeg?"
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-muldvarperne-valg"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-muldvarperne-valg">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="choice">
+                        <button type="button" data-next="scene-muldvarpe-fail">En magisk svamp</button>
+                        <button type="button" data-run="answerRiddleCorrect" data-next="scene-rodalon">Et træ</button>
+                        <button type="button" data-run="giveUpRiddle" data-next="scene-finale-redirect">Giv op og gå i kamp uden våben</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-muldvarpe-fail">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <img class="character" data-char="muldvarp" src="assets/images/characters/char-alex-neutral.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Muldvarpen" data-color="#5c4033">
+                        "Det er desværre forkert. Tænk dig om, rejsende! Rødder, men kan ikke gå..."
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-muldvarperne-valg"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-rodalon">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Muldvarpen rækker dig et lysende magisk sværd. Det føles magtfuldt i dine hænder.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Muldvarpen" data-color="#5c4033">
+                        "Det er dit nu. Hvad vil du navngive det magiske sværd?"
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="run" data-action="nameSword"></div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Der bliver helt stille. Lidt antiklimatisk. En muldvarp hoster forsigtigt i baggrunden.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="goto" data-scene="scene-finale-redirect"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-finale-redirect">
+                <div class="steps">
+                    <div data-step="run" data-action="goToFinale"></div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-finale-sword">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier står i en enorm underjordisk hule. Loftet er så højt, at han ikke kan se det. Væggene er dækket af sorte, pulserende rødder.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Midt i det hele står Kong Fugu, flere meter høj. Han styrer alle svampene - de ser hvad han ser, og gør hvad han befaler.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Birkes" data-color="#a0e8af">
+                        Det magiske træs stemme ruller ned gennem jorden: "Stik sværdet ind i ham, og de bliver frie!"
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="choice">
+                        <button type="button" data-run="attackDirectly" data-next="scene-ending-good">
+                            Løb direkte mod Fugu og hug til med sværdet!
+                        </button>
+                        <button type="button" data-run="sneakAttack" data-next="scene-ending-good">
+                            Lok svampene væk og angrib lydløst med sværdet
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-finale-nosword">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <div class="steps">
+                    <div data-step="say" data-speaker="Narrator">
+                        Xavier står i en enorm underjordisk hule. Kong Fugu knejser sig over ham. Væggene er dækket af pulserende rødder.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="say" data-speaker="Narrator">
+                        Han mærker panikken sprede sig. Han har intet sværd. Skovbunden i hulen er heldigvis fuld af store, spidse sten.
+                    </div>
+                    <div data-step="wait-click"></div>
+                    <div data-step="choice">
+                        <button type="button" data-run="throwRocks" data-next="scene-ending-bad">
+                            Saml sten op og kast dem mod Kong Fugu!
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene" id="scene-ending-good" data-hide-story-ui="true">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <section class="ending-screen ending-screen--good">
+                    <p class="ending-kicker">Ending A</p>
+                    <h1>Det Magiske Lys</h1>
+                    <p class="ending-lead">
+                        Et hvidt lys løber gennem rødderne. Kong Fugu synker ned i jorden. Svampene stopper, blinker forvirret, og får for første gang en egen tanke. De begynder at danse med varme øjne! Åen løber klar igen, og alle dyrene bygger skoven op i fællesskab. Det magiske træ siger: "Du er ikke bare et menneske, Xavier. Du er en del af os."
+                    </p>
+                    <button class="primary-button" type="button" data-run="restartStory">
+                        Spil igen
+                    </button>
+                </section>
+                <div class="steps"></div>
+            </section>
+
+            <section class="scene" id="scene-ending-bad" data-hide-story-ui="true">
+                <img class="scene-background" src="assets/images/scenes/scene-living-room.png" alt="">
+                <section class="ending-screen ending-screen--bad">
+                    <p class="ending-kicker">Ending B</p>
+                    <h1>Den Bitre Stilhed</h1>
+                    <p class="ending-lead">
+                        Kong Fugu er væk, men skoven er ikke fri. Svampene står som statuer med sorte, tomme øjne. Træet sukker: "Du stoppede mørket, men gav dem ikke lyset tilbage." Xavier vågner på et hospital. Hans kæreste skælder ham ud for at falde i et hul. Han kigger op i loftet og smiler, glad for eventyret.
+                    </p>
+                    <button class="primary-button" type="button" data-run="restartStory">
+                        Spil igen
+                    </button>
+                </section>
+                <div class="steps"></div>
+            </section>
+
+            <section class="story-ui">
+                <section class="action-panel">
+                    <button class="primary-button is-hidden" id="continue-button" type="button">Fortsæt</button>
+                    <div class="choice-list" id="choice-list"></div>
+                </section>
+                <section class="dialog-panel">
+                    <p class="speaker-label" id="speaker-name"></p>
+                    <p class="dialog-text" id="dialog-text"></p>
                 </section>
             </section>
-        </section>
-    </main>
 
-    <audio id="sfx-click" preload="auto" src="assets/audio/sfx-click.mp3"></audio>
+        </section>
+    </section>
+</main>
 </body>
 </html>
