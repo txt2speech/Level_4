@@ -28,26 +28,26 @@ const storyActions = {
     game.setDialog("Narrator", "Ørnen trækker sig. Men larmen vækker noget i skoven og Xavier hører tunge trin nærme sig bag ham.", "#a0e8af");
   },
 
-  // --- ILLUSION OF FREE CHOICE (FEEN & SØEN) ---
+  // --- BRANCHING & GAME STATE LOGIK ---
   finishFairy(game) {
     game.setState({ visitedFairy: true });
 
-    // Hvis søen også er klaret, tager feen os direkte til muldvarperne
+    // Hvis søen også allerede er klaret, går turen direkte til muldvarperne
     if (game.state.visitedLake) {
       return 'scene-feen-to-moles';
     }
-    // Ellers sender hun os tilbage til krydset for at klare søen
+    // Ellers skal spilleren tilbage og vælge søen
     return 'scene-intermission-only-lake';
   },
 
   finishLake(game) {
     game.setState({ visitedLake: true });
 
-    // Hvis feen også er klaret, tager bæveren os direkte til muldvarperne
+    // Hvis feen også allerede er klaret, går turen direkte til muldvarperne
     if (game.state.visitedFairy) {
       return 'scene-soen-to-moles';
     }
-    // Ellers sender bæveren os tilbage til krydset for at klare feen
+    // Ellers skal spilleren tilbage og vælge feen
     return 'scene-intermission-only-fairy';
   },
 
@@ -63,12 +63,12 @@ const storyActions = {
     game.setDialog("Xavier", "Jeg døber dig... Rodalon!", "#79b8f9");
   },
 
-  // Tjekker om man har sværdet og sender én til den korrekte bossscene
+  // Tjekker spillets state og åbner kun op for den boss-kamp man har fortjent
   goToFinale(game) {
     return game.state.hasSword ? 'scene-finale-sword' : 'scene-finale-nosword';
   },
 
-  // --- BOSS KAMP ---
+  // --- FINALE HANDLINGER ---
   attackDirectly(game) {
     game.setDialog("Narrator", "Xavier løber. Svampene griber efter ham, men han når frem og hugger sværdet dybt ned i Kong Fugu.", "#f9e076");
   },
