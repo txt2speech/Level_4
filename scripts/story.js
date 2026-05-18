@@ -84,3 +84,57 @@ VisualNovelEngine.boot({
   initialState: storyInitialState,
   actions: storyActions,
 });
+// Funktion til at fade musikken IND (fra 0.0 til 0.4)
+function fadeInBGM(audio, duration = 3000) {
+  audio.volume = 0;
+  audio.play().catch(err => console.log("Afspilning venter på klik:", err));
+
+  let start = null;
+  const targetVolume = 0.4; // Sætter musikken til et behageligt baggrundsniveau
+
+  function animate(timestamp) {
+    if (!start) start = timestamp;
+    let progress = timestamp - start;
+    audio.volume = Math.min((progress / duration) * targetVolume, targetVolume);
+    if (progress < duration) {
+      requestAnimationFrame(animate);
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+
+function fadeOutAndLoopBGM(audio, duration = 3000) {
+  let start = null;
+  const startVolume = audio.volume;
+
+  function animate(timestamp) {
+    if (!start) start = timestamp;
+    let progress = timestamp - start;
+    audio.volume = Math.max(startVolume - (progress / duration) * startVolume, 0);
+
+    if (progress < duration) {
+      requestAnimationFrame(animate);
+    } else {
+      audio.currentTime = 0;
+      fadeInBGM(audio, duration);
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+document.addEventListener('click', function startMusicOnFirstClick() {
+  const bgm = document.getElementById('bgm-forest');
+  if (bgm && bgm.paused) {
+    fadeInBGM(bgm, 3000);
+
+    bgm.addEventListener('timeupdate', function checkTime() {
+      if (bgm.duration - bgm.currentTime <= 3) {
+        bgm.removeEventListener('timeupdate', checkTime);
+        fadeOutAndLoopBGM(bgm, 3000);
+      }
+    });
+  }
+
+  document.removeEventListener('click', startMusicOnFirstClick);
+}, { once: true });
